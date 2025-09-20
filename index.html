@@ -17,13 +17,13 @@
 		<div class="reveal">
 			<div class="slides">
 				<!-- Title Slide -->
-                <section>
+                <section data-background="dist/assets/background.png" data-background-size="cover" data-background-position="center">
                     <h1 style="font-size: 2.5em;">XPEvo Behind the Scenes</h1>
 					<p style="color: #ecf0f1; margin-top: 40px;">How we built the tech stack for one of Trackmania's biggest tournaments</p>
                 </section>
 
                 <!-- About Me -->
-                <section>
+                <section data-background="dist/assets/background2.png" data-background-size="cover" data-background-position="center">
                     <style>
                         .about-grid{
                             display: grid;
@@ -49,7 +49,7 @@
                         }
                     </style>
 
-					<h2 style="display: flex; color:#16a085;">Hans "Atomic" Lau Borch</h2>
+					<h2 style="display: flex;">Hans "Atomic" Lau Borch</h2>
                     <div class="about-grid">
                         <div class="about-text">
                             <p>⚙️ <strong>Co-organizer</strong> of XPEvo</p>
@@ -76,7 +76,7 @@
                 </section>
 
                 <!-- The Challenge -->
-                <section>
+                <section data-background="dist/assets/background2.png" data-background-size="cover" data-background-position="center">
                     <h2>The Challenge</h2>
                     <p>Running a live tournament with:</p>
                     <ul>
@@ -89,35 +89,26 @@
                 </section>
 
                 <!-- The Big Picture -->
-                <section>
+                <section data-background="dist/assets/background2.png" data-background-size="cover" data-background-position="center">
                     <h2>Our Solution: 3 Key Components</h2>
                     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; text-align: center; margin-top: 40px;" r-fit-width>
                         <div class="fragment">
-							<div style="display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 10px;">
-								<p>🎮</p>
-								<p><strong>EvoSC-sharp</strong></p>
-							</div>
+							<p>🎮 <strong>EvoSC-sharp</strong></p>
                             <p>Server Controller</p>
                         </div>
                         <div class="fragment">
-							<div style="display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 10px;">
-								<p>📺</p>
-								<p><strong>Stream Overlay</strong></p>
-							</div>
-                            <p>Live Production Tool</p>
+							<p>📺 <strong>Stream Overlay</strong></p>
+							<p>Live Production Tool</p>
                         </div>
                         <div class="fragment">
-                            <div style="display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 10px;">
-								<p>⚙️</p>
-								<p><strong>Match Admin</strong></p>
-							</div>
+                            <p>⚙️ <strong>Match Admin</strong></p>
                             <p>Tournament Control</p>
                         </div>
                     </div>
                 </section>
 
                 <!-- EvoSC-sharp -->
-                <section>
+                <section data-background="dist/assets/background2.png" data-background-size="cover" data-background-position="center">
                     <section>
                         <h2>🎮 EvoSC-sharp: The Game Controller</h2>
                         <p>Think of it as the "brain" that watches everything happening in the game</p>
@@ -140,13 +131,12 @@
                             <li>Real-time event handling from Trackmania servers</li>
                             <li>Plugin architecture for extensibility</li>
                             <li>Database integration for persistent data</li>
-                            <li>API endpoints for external tools</li>
                         </ul>
                     </section>
                 </section>
 
                 <!-- Stream Overlay -->
-                <section>
+                <section data-background="dist/assets/background2.png" data-background-size="cover" data-background-position="center">
                     <section>
                         <h2>📺 Stream Overlay: Production Magic</h2>
                         <p>The tool that makes broadcasts look professional</p>
@@ -167,9 +157,8 @@
                         <ul>
                             <li>WebSocket connections for real-time data</li>
                             <li>Browser-based overlay system</li>
-                            <li>OBS integration for streaming</li>
-                            <li>Customizable themes and layouts</li>
-							<li>Inspired by Beacon World League</li>
+                            <li>OBS integration for camera control</li>
+							<li>Inspired by Beacon's overlay tool</li>
 							<li>Built with Next.JS</li>
                         </ul>
                     </section>
@@ -181,7 +170,7 @@
                 </section>
 
                 <!-- Match Admin -->
-                <section>
+                <section data-background="dist/assets/background2.png" data-background-size="cover" data-background-position="center">
                     <section>
                         <h2>⚙️ Match Admin: Tournament Control Center</h2>
                         <p>The command center for tournament organizers</p>
@@ -213,16 +202,17 @@
                 </section>
 
                 <!-- How They Work Together -->
-                <section>
+                <section data-background="dist/assets/background2.png" data-background-size="cover" data-background-position="center">
 					<section data-auto-animate>
                     	<h2>🔗 How It All Connects</h2>
 						<div style="font-size: 0.8em;">
-							<p>🎮 <strong>EvoSC-sharp</strong> captures game events</p>
+							<p>⚙️ <strong>Match Admin</strong> controls the servers</p>
+							<p>⬇️</p>
+							<p>🎮 <strong>EvoSC-sharp</strong> captures and acts on game events</p>
 							<p>⬇️</p>
 							<p>📺 <strong>Stream Overlay</strong> displays data to viewers</p>
 							<p>⬇️</p>
-							<p>⚙️ <strong>Match Admin</strong> controls the servers</p>
-							<p>⬇️</p>
+							
 							<p data-id="real-time-data">🔄 All components share real-time data</p>
 						</div>
 					</section>
@@ -251,7 +241,7 @@
                 </section>
 
                 <!-- Challenges & Solutions -->
-                <section>
+                <section data-background="dist/assets/background2.png" data-background-size="cover" data-background-position="center">
                     <section>
                         <h2>🚧 Challenges We Faced</h2>
                     </section>
@@ -278,7 +268,7 @@
                 </section>
 
                 <!-- Impact & Results -->
-                <section>
+                <section data-background="dist/assets/background2.png" data-background-size="cover" data-background-position="center">
                     <h2>📈 The Results</h2>
                     <ul>
                         <li class="fragment">✅ Smooth tournament operations</li>
@@ -290,30 +280,63 @@
                 </section>
 
                 <!-- Future Plans -->
-                <section>
-                    <h2>🚀 What's Next?</h2>
-                    <ul>
-                        <li>🤖 AI-powered analytics</li>
-                        <li>📱 Mobile companion apps</li>
-                        <li>🌐 Multi-game support</li>
-                        <li>📊 Advanced statistics dashboard</li>
-                    </ul>
+                <section data-background="dist/assets/background2.png" data-background-size="cover" data-background-position="center">
+					<section data-auto-animate>
+						<h2>🚀 What's Next?</h2>
+						<p>According to AI:</p>
+						<ul>
+							<li>🤖 AI-powered analytics</li>
+							<li>📱 Mobile companion apps</li>
+							<li>🌐 Multi-game support</li>
+							<li>📊 Advanced statistics dashboard</li>
+						</ul>
+					</section>
+					<section data-auto-animate>
+						<h2>🚀 What's Next?</h2>
+						<p>According to me:</p>
+						<ul>
+							<li>🛠️ Polish existing tools</li>
+							<li>🔧 Add more features based on feedback</li>
+							<li>🌍 Open source components for community use</li>
+							<li>🤝 Collaborate with other organizers</li>
+							<li>🏗️ Create a tournament platform</li>
+						</ul>
+					</section>
                 </section>
 
-				<section>
+				<section data-background="dist/assets/background2.png" data-background-size="cover" data-background-position="center">
                     <h2>👐 EvoSC-sharp — Open Source</h2>
-                    <p>Thanks to the community — EvoSC-sharp is available on GitHub.</p>
+                    <p>EvoSC-sharp is available on GitHub.</p>
                     <p>
                         <a href="https://github.com/EvoSC/EvoSC-sharp" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:12px;text-decoration:none;">
-                            <img src="https://cdn.simpleicons.org/github/16A085" width="48" height="48" alt="GitHub logo" />
-                            <strong style="color:#16a085;">github.com/EvoSC/EvoSC-sharp</strong>
+                            <img src="https://cdn.simpleicons.org/github/1dcad0" width="48" height="48" alt="GitHub logo" />
+                            <strong style="color:#1dcad0;">github.com/EvoSC/EvoSC-sharp</strong>
                         </a>
                     </p>
-                    <p style="font-size:0.9em; opacity:0.9;">Fork, file issues, or contribute — help us make tournaments better.</p>
+                    <p style="font-size:0.9em; opacity:0.8;">Fork, file issues, or contribute — help us make our servers and tournaments better.</p>
                 </section>
 
+				<section data-background="dist/assets/background2.png" data-background-size="cover" data-background-position="center">
+					<h2>👥 Contributors</h2>
+					<ul>
+						<li>👤 snixtho</li>
+						<li>👤 Glocom</li>
+						<li>👤 Braker</li>
+					</ul>
+					<div style="font-size: 24px; opacity:0.8;">
+						<p>Honorable mentions:</p>
+						<ul>
+							<li>👤 Chris92</li>
+							<li>👤 Phenom</li>
+							<li>👤 thaumictom</li>
+							<li>👤 Kalln</li>
+							<li>👤 Nsgr</li>
+						</ul>
+					</div>
+				</section>
+
                 <!-- Q&A -->
-                <section>
+                <section data-background="dist/assets/background2.png" data-background-size="cover" data-background-position="center">
 					<div style='position: relative; padding-bottom: 56.25%; padding-top: 35px; height: 0; overflow: hidden;'>
 						<iframe 
 							sandbox='allow-scripts allow-same-origin allow-presentation'
@@ -326,10 +349,10 @@
 					</div>
                 </section>
 
-				<section>
+				<section data-background="dist/assets/background2.png" data-background-size="cover" data-background-position="center">
 					<h2>🙏 Thank You!</h2>
 					<p>More questions? Reach out on Discord or Twitter!</p>
-					<p style="margin-top: 40px; font-size: 0.8em; opacity: 0.8;">Slides available at <a href="https://example.com/slides">https://example.com/slides</a></p>
+					<p style="margin-top: 40px; font-size: 0.8em; opacity: 0.8;">Slides available at <a href="https://github.com/AtomicLiquid/xpevo-tech-presentation">https://github.com/AtomicLiquid/xpevo-tech-presentation</a></p>
 				</section>
 			</div>
 		</div>
