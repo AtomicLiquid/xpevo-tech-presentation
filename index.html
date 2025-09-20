@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/black.css">
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<!-- Title Slide -->
+                <section>
+                    <h1 style="font-size: 2.5em;">XPEvo Behind the Scenes</h1>
+					<p style="color: #ecf0f1; margin-top: 40px;">How we built the tech stack for one of Trackmania's biggest tournaments</p>
+                </section>
+
+                <!-- About Me -->
+                <section>
+                    <style>
+                        .about-grid{
+                            display: grid;
+                            grid-template-columns: 1fr 260px;
+                            gap: 32px;
+                            align-items: center;
+                            max-width: 1100px;
+                            margin: 0 auto;
+                        }
+                        .about-text{ text-align:left; }
+                        .about-text h2{ margin:0 0 8px 0; }
+                        .about-text p{ margin:6px 0; line-height:1.5; }
+                        .about-avatar{ text-align: start; }
+                        .about-avatar img{ width:220px; max-width:40vw; border-radius:50%; display:block; margin:0 auto; }
+                        .contact-row{ display:flex; flex-direction: column; align-items: flex-end; gap:12px; margin-top:12px; font-size:0.95em; justify-content: center; }
+                        .contact-row img{ width:28px; height:28px; }
+						.discord, .github{ display:flex; align-items:center; justify-content: flex-end; gap:8px; }
+                        @media (max-width:800px){
+                            .about-grid{ grid-template-columns:1fr; text-align:center; padding:0 18px; }
+                            .about-text{ order:2; }
+                            .about-avatar{ order:1; }
+                            .contact-row{ justify-content:center; flex-wrap:wrap; gap:10px; }
+                        }
+                    </style>
+
+					<h2 style="display: flex; color:#16a085;">Hans "Atomic" Lau Borch</h2>
+                    <div class="about-grid">
+                        <div class="about-text">
+                            <p>⚙️ <strong>Co-organizer</strong> of XPEvo</p>
+                            <p>🛡️ <strong>Admining Evo Esports</strong> since 2021</p>
+                            <p>🇳🇴 <strong>Norwegian dev</strong> focused on gaming infrastructure</p>
+                            <p>🎮 <strong>18+ years</strong> in the Trackmania community</p>
+                            <p>💻 <strong>Building tools</strong> that make tournaments run smoother</p>
+                        </div>
+
+                        <div class="about-avatar">
+                            <img src="dist/assets/me.jpg" alt="Hans Atomic" />
+                            <div class="contact-row">
+								<div class="discord">
+									<img src="https://cdn.simpleicons.org/discord/5865F2" alt="Discord logo" />
+									<span>@atomicliquid</span>
+								</div>
+                                <div class="github">
+									<img src="https://cdn.simpleicons.org/github/16A085" alt="GitHub logo" style="margin-left:18px;" />
+									<span>@atomicliquid</span>
+								</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- The Challenge -->
+                <section>
+                    <h2>The Challenge</h2>
+                    <p>Running a live tournament with:</p>
+                    <ul>
+                        <li class="fragment">🎮 Multiple game servers</li>
+                        <li class="fragment">📺 Live streaming production</li>
+                        <li class="fragment">⚡ Real-time data visualization</li>
+                        <li class="fragment">🎯 Tournament administration</li>
+                        <li class="fragment">👥 Hundreds of participants</li>
+                    </ul>
+                </section>
+
+                <!-- The Big Picture -->
+                <section>
+                    <h2>Our Solution: 3 Key Components</h2>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; text-align: center; margin-top: 40px;" r-fit-width>
+                        <div class="fragment">
+							<div style="display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 10px;">
+								<p>🎮</p>
+								<p><strong>EvoSC-sharp</strong></p>
+							</div>
+                            <p>Server Controller</p>
+                        </div>
+                        <div class="fragment">
+							<div style="display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 10px;">
+								<p>📺</p>
+								<p><strong>Stream Overlay</strong></p>
+							</div>
+                            <p>Live Production Tool</p>
+                        </div>
+                        <div class="fragment">
+                            <div style="display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 10px;">
+								<p>⚙️</p>
+								<p><strong>Match Admin</strong></p>
+							</div>
+                            <p>Tournament Control</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- EvoSC-sharp -->
+                <section>
+                    <section>
+                        <h2>🎮 EvoSC-sharp: The Game Controller</h2>
+                        <p>Think of it as the "brain" that watches everything happening in the game</p>
+                    </section>
+                    
+                    <section>
+                        <h3>What it does (Non-tech view)</h3>
+                        <ul>
+                            <li>📊 Shows live race times and rankings</li>
+                            <li>🏆 Tracks player statistics</li>
+                            <li>💬 Manages chat and notifications</li>
+                            <li>🎯 Enhances the player experience</li>
+                        </ul>
+                    </section>
+                    
+                    <section>
+                        <h3>How it works (Tech view)</h3>
+                        <ul>
+							<li>Benefits on the XML-RPC API</li>
+                            <li>Real-time event handling from Trackmania servers</li>
+                            <li>Plugin architecture for extensibility</li>
+                            <li>Database integration for persistent data</li>
+                            <li>API endpoints for external tools</li>
+                        </ul>
+                    </section>
+                </section>
+
+                <!-- Stream Overlay -->
+                <section>
+                    <section>
+                        <h2>📺 Stream Overlay: Production Magic</h2>
+                        <p>The tool that makes broadcasts look professional</p>
+                    </section>
+                    
+                    <section>
+                        <h3>What viewers see</h3>
+                        <ul>
+                            <li>🏁 Live race positions and times</li>
+                            <li>📈 Dynamic leaderboards</li>
+                            <li>🎬 Smooth transitions and animations</li>
+                            <li>📊 Real-time statistics and graphics</li>
+                        </ul>
+                    </section>
+                    
+                    <section>
+                        <h3>Behind the scenes</h3>
+                        <ul>
+                            <li>WebSocket connections for real-time data</li>
+                            <li>Browser-based overlay system</li>
+                            <li>OBS integration for streaming</li>
+                            <li>Customizable themes and layouts</li>
+							<li>Inspired by Beacon World League</li>
+							<li>Built with Next.JS</li>
+                        </ul>
+                    </section>
+					<section>
+						<h3>Demo Time!</h3>
+						<p>Let's see it in action with a quick demo</p>
+						<video src="https://cdn.discordapp.com/attachments/1376245294991413248/1414381336868950218/2025-09-08_00-39-57.mp4?ex=68cfd784&is=68ce8604&hm=0af5a784cdffee2ccdf688043066a7c6afaee91808e66d9e56a6e6bec265e3c9&" data-preview-video></video>
+					</section>
+                </section>
+
+                <!-- Match Admin -->
+                <section>
+                    <section>
+                        <h2>⚙️ Match Admin: Tournament Control Center</h2>
+                        <p>The command center for tournament organizers</p>
+                    </section>
+                    
+                    <section>
+                        <h3>Tournament Management</h3>
+                        <ul>
+                            <li>🎮 Control multiple game servers</li>
+                            <li>▶️ Start and stop matches remotely</li>
+                            <li>📋 Assign matches to specific servers</li>
+                            <li>👥 Monitor player connections</li>
+                        </ul>
+                    </section>
+                    
+                    <section>
+                        <h3>Technical Implementation</h3>
+                        <ul>
+                            <li>Web-based dashboard</li>
+                            <li>Real-time status monitoring</li>
+                            <li>Automated match scheduling</li>
+                        </ul>
+                    </section>
+					<section>
+						<h3>Demo Time!</h3>
+						<p>Let's see it in action with a quick demo</p>
+						<video src="https://cdn.discordapp.com/attachments/1376245294991413248/1414381336868950218/2025-09-08_00-39-57.mp4?ex=68cfd784&is=68ce8604&hm=0af5a784cdffee2ccdf688043066a7c6afaee91808e66d9e56a6e6bec265e3c9&" data-preview-video></video>
+					</section>
+                </section>
+
+                <!-- How They Work Together -->
+                <section>
+					<section data-auto-animate>
+                    	<h2>🔗 How It All Connects</h2>
+						<div style="font-size: 0.8em;">
+							<p>🎮 <strong>EvoSC-sharp</strong> captures game events</p>
+							<p>⬇️</p>
+							<p>📺 <strong>Stream Overlay</strong> displays data to viewers</p>
+							<p>⬇️</p>
+							<p>⚙️ <strong>Match Admin</strong> controls the servers</p>
+							<p>⬇️</p>
+							<p data-id="real-time-data">🔄 All components share real-time data</p>
+						</div>
+					</section>
+					<section data-auto-animate>
+						<p data-id="real-time-data">🔄 All components share real-time data</p>
+					</section>
+					<section data-auto-animate>
+                        <h3>The power of event-driven architecture</h3>
+                        <p><strong>Plain English:</strong> One source pushes live updates instantly — no polling.</p>
+                        <ul>
+                            <li class="fragment">📡 Instant updates to overlay, admin panel and services</li>
+                            <li class="fragment">🔁 Decouples game servers (producers) from consumers</li>
+                            <li class="fragment">⚡ Handles bursty event loads efficiently</li>
+                        </ul>
+                    </section>
+
+                    <section data-auto-animate>
+                        <h3>Technical details</h3>
+                        <ul>
+                            <li class="fragment"><strong>Transport:</strong> NATS JetStream — lightweight, low-latency pub/sub with persistence</li>
+                            <li class="fragment"><strong>Events:</strong> semantic topics like <code>race.finish</code>, <code>player.join</code>, <code>server.status</code></li>
+                            <li class="fragment"><strong>Design:</strong> Subscribers subscribe only to needed streams for performance & isolation</li>
+                        </ul>
+                        <p style="margin-top:12px; font-size:0.9em; opacity:0.9;">Flow: player finishes → EvoSC publishes <code>race.finish</code> → Overlay updates + Results are published to Toornament.</p>
+                    </section>
+                </section>
+
+                <!-- Challenges & Solutions -->
+                <section>
+                    <section>
+                        <h2>🚧 Challenges We Faced</h2>
+                    </section>
+                    
+                    <section>
+                        <h3>Real-time Performance</h3>
+                        <p><strong>Challenge:</strong> Processing hundreds of events per second</p>
+                        <p><strong>Solution:</strong> Efficient event handling and caching</p>
+                    </section>
+                    
+					<section>
+						<h3>Tournament software</h3>
+						<p><strong>Challenge:</strong> Finding a platform that supports Trackmania's Tournament 1v1v1v1 format</p>
+						<p><strong>Temporary solution:</strong> Utilize Toornament's platform</p>
+						<p><strong>Long-term solution:</strong> Develop a custom solution tailored to our needs</p>
+					</section>
+
+                    <section>
+                        <h3>Testing</h3>
+                        <p><strong>Challenge:</strong> Simulating real tournament conditions</p>
+                        <p><strong>Solution:</strong> Local test environment with mock data and small-scale trials</p>
+                        <p><strong>Reality:</strong> Nothing beats the chaos of a live event! 🔥</p>
+                    </section>
+                </section>
+
+                <!-- Impact & Results -->
+                <section>
+                    <h2>📈 The Results</h2>
+                    <ul>
+                        <li class="fragment">✅ Smooth tournament operations</li>
+                        <li class="fragment">📺 Professional broadcast quality</li>
+                        <li class="fragment">😊 Enhanced player experience</li>
+                        <li class="fragment">⚡ Real-time data for spectators</li>
+                        <li class="fragment">🎯 Efficient tournament management</li>
+                    </ul>
+                </section>
+
+                <!-- Future Plans -->
+                <section>
+                    <h2>🚀 What's Next?</h2>
+                    <ul>
+                        <li>🤖 AI-powered analytics</li>
+                        <li>📱 Mobile companion apps</li>
+                        <li>🌐 Multi-game support</li>
+                        <li>📊 Advanced statistics dashboard</li>
+                    </ul>
+                </section>
+
+				<section>
+                    <h2>👐 EvoSC-sharp — Open Source</h2>
+                    <p>Thanks to the community — EvoSC-sharp is available on GitHub.</p>
+                    <p>
+                        <a href="https://github.com/EvoSC/EvoSC-sharp" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:12px;text-decoration:none;">
+                            <img src="https://cdn.simpleicons.org/github/16A085" width="48" height="48" alt="GitHub logo" />
+                            <strong style="color:#16a085;">github.com/EvoSC/EvoSC-sharp</strong>
+                        </a>
+                    </p>
+                    <p style="font-size:0.9em; opacity:0.9;">Fork, file issues, or contribute — help us make tournaments better.</p>
+                </section>
+
+                <!-- Q&A -->
+                <section>
+					<div style='position: relative; padding-bottom: 56.25%; padding-top: 35px; height: 0; overflow: hidden;'>
+						<iframe 
+							sandbox='allow-scripts allow-same-origin allow-presentation'
+							allowfullscreen='true'
+							allowtransparency='true'
+							frameborder='0'
+							src='https://www.mentimeter.com/app/presentation/aldio74suo8ve3161cgkf6auffark86v/embed'
+							style='position: absolute; top: 0; left: 0; width: 100%; height: 100%;' 
+						></iframe>
+					</div>
+                </section>
+
+				<section>
+					<h2>🙏 Thank You!</h2>
+					<p>More questions? Reach out on Discord or Twitter!</p>
+					<p style="margin-top: 40px; font-size: 0.8em; opacity: 0.8;">Slides available at <a href="https://example.com/slides">https://example.com/slides</a></p>
+				</section>
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+			});
+		</script>
+	</body>
+</html>
